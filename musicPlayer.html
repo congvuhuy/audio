@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="musicPlayer.css">
+</head>
+<body>
+    <div class="container">
+            <div class="header">
+                <div class="head">
+                    <p style="margin-top: 5px; color: red;text-align: center;"><b>Now playing</b></p>
+                    <h2 style="margin-top: 5px; text-align: center;" class="song_name"></h2>
+                </div>
+                <div class="a cd ">
+                    <img alt="song img">
+                </div>
+                <div class="control">
+                    <span class="icon-reload-on">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </span>
+                    <span class="icon-back">
+                        <i class="fa-solid fa-backward"></i>
+                    </span>
+                    <span class="icon-play">
+                        <i id="a" class="fa-solid fa-play"></i>
+                        <i id="b" class="fa-solid fa-pause"></i>           
+                    </span>
+                    <span class="icon-next">
+                        <i class="fa-solid fa-forward"></i>
+                    </span>
+                    <span class="icon-back">
+                        <i class="fa-solid fa-shuffle"></i>          
+                    </span>
+                </div>
+                <input class="progress" id="progress" class="progress-Control" type="range" value="0" step="1" min="0" max="100"></input>  
+                <i style="margin-left: 200px;" class="fa-solid fa-volume-low"> 
+                    <input class="vol" id="vol" type="range" value="20" step="10" min="0" max="100"></i></input>    
+                </i>
+                
+                
+                <audio class="main-audio" ></audio> 
+            </div>
+            <div  class="play-list">
+                
+                
+            </div>
+        
+        
+    </div>
+    
+</body>
+<script src="musicPlayer.js"></script>
+</html>

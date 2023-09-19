@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Bradley Hand, cursive;
+}
+
+.container{
+    width: 300px;
+    height: 1000px;
+    background-color: rosybrown;
+    margin: 0 auto;
+    border: solid 2px antiquewhite;
+    border-radius: 10px;
+    
+}
+ .container .header {
+    border-radius: 10px;
+    width:300px;
+    position: fixed;
+    background-color: rgb(252, 252, 252) ;
+}
+.container .header .head{
+    height: 60px;
+    width: auto;
+    font-size: 15px;
+}
+.container .header .cd {
+     text-align: center;
+}
+.cd-play{
+    text-align:  center;
+}
+
+.container .header .cd >img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+.container .header .cd-play >img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    transform: rotateZ(10000deg);
+    transition: transform 300s ease ;
+}
+.control{
+    margin:0 50px;
+    height:auto;
+    width: auto;
+    position: relative;
+}
+.control .icon-play #b{
+    display: none;
+}
+ 
+.control .icon-pause #a{
+    display: none;
+}
+#a, #b{
+    font-size: 20px;
+}
+.control .icon-reload-off>i{
+    color: aqua;
+}
+.control span{
+    margin-left: 10px;
+    margin-right: 10px;  
+}
+
+span :hover{
+    color: aqua;
+   
+}
+.progress{
+    height: 5px;
+    width: auto;
+}
+.play-list{
+    margin-top: 340px;
+    height: auto;
+    
+}
+.play-list .song{
+    height: 50px;
+    margin-top: 5px;
+    background-color: rgb(206, 213, 219);
+    border-radius: 10px;
+
+}
+.play-list .song .img{
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    display: inline-block;
+}
+.img img{
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    margin-left: 5px;
+    display: inline-block;
+}
+.play-list .song .descreption{
+    width: 240px;
+    display: inline-block;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: relative;
+  }
+  .fa-volume-low{
+    transform: translateX(55px) translateY(-44px);
+  }
+  .fa-volume-low:hover {
+    color: aqua;
+  }
+  .fa-volume-low:hover >.vol{
+    display: inline-block;
+    
+  }
+  .vol{
+    display: none;
+    width: 60%;
+    height: 2px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+   
+    
+    transform:translateY(-25px) translateX(-20px) rotateZ(-90deg); 
+  }
+
+  /* .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; 
+    background: #9704aa;
+    cursor: pointer;
+  }
+  
+  .progress::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #aa048c;
+    cursor: pointer;
+  } */
