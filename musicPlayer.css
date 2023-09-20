@@ -7,17 +7,18 @@
 .container{
     width: 300px;
     height: 1000px;
-    background-color: rosybrown;
+   
     margin: 0 auto;
     border: solid 2px antiquewhite;
     border-radius: 10px;
+    background-image:url('data/imgs/back1.jpg');
     
 }
  .container .header {
     border-radius: 10px;
     width:300px;
     position: fixed;
-    background-color: rgb(252, 252, 252) ;
+    background-color: rgb(232, 125, 125) ;
 }
 .container .header .head{
     height: 60px;
@@ -60,6 +61,9 @@
     font-size: 20px;
 }
 .control .icon-reload-off>i{
+    color: aqua;
+}
+.control .icon-random-off>i{
     color: aqua;
 }
 .control span{

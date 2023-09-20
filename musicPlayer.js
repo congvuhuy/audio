@@ -7,6 +7,10 @@ const nextSongBtn=$('.icon-next');
 const prevSongBtn=$('.icon-back');
 const audio_control=$('.main-audio')
 
+var isReplay=false;
+var isRandom=false;
+
+
 const app={
     currentIndex: 0,
     songs: [
@@ -28,6 +32,18 @@ const app={
             path:'./data/songs/song3.mp3',
             image:'./data/imgs/img3.jpg',
         },
+        {
+            name:'À lôi',
+            singer:'double2T',
+            path:'./data/songs/song4.mp3',
+            image:'./data/imgs/img4.jpg',
+        },
+        {
+            name:'Nụ hôn bisou',
+            singer:'Mikelodic',
+            path:'./data/songs/song5.mp3',
+            image:'./data/imgs/img5.jpg',
+        },
         
     ],
     defineProperties: function () {
@@ -48,8 +64,11 @@ const app={
         
     },
   
-
+// sử lý sư kiên
     handleEvent: function () {
+        
+
+
         const audio_control=$('.main-audio')
         const a=$('.icon-play');
         const imgScroll=$('.a img');
@@ -57,8 +76,9 @@ const app={
         const progress=$('.progress');
         const currentVol=$('.vol');
         const replayBtnOn=$('.icon-reload-on');
-       
-
+        const randomBtn=$('.icon-random');
+        const timeSet=$('.time');
+        const timeRemaining=$('.timeRemaining')
         const width=200;
         
             document.onscroll=function () {
@@ -85,44 +105,49 @@ const app={
                 imgRotate.classList.add('cd');
                 imgRotate.classList.remove('cd-play');
             }
-            progress.onclick=function(){
-                audio_control.currentTime=progress.value/100*audio_control.duration
-                console.log(audio_control.currentTime);
-                audio_control.play();  
-
+            progress.onchange=function(e){
+                audio_control.currentTime=audio_control.duration/100*e.target.value
             }
             
             audio_control.ontimeupdate=function(){
                 
+                timeSet.innerHTML=Math.floor(audio_control.currentTime/60)+':'+Math.floor(audio_control.currentTime%60);
+                timeRemaining.innerHTML=Math.floor((audio_control.duration-audio_control.currentTime)/60)+':'+Math.floor((audio_control.duration-audio_control.currentTime)%60)
                 audio_control.volume=currentVol.value/100;
                 var currentTime=audio_control.currentTime;
                 var time=audio_control.duration;
                 var percent=Math.floor(currentTime/time*100);
                 progress.value = percent;   
+            }  
+            // tw dong next bai khi key thc
+            audio_control.onended=function(){
+                nextSongBtn.click();
             }
-            var i=0;
+            // replay lai bai hat
             replayBtnOn.onclick=function(){
-
-                i++;
-                if (i%2==1) {
-                    isReplay=true;
-                    app.replayAudio();
-                    replayBtnOn.classList.add('icon-reload-off');
-                }else{
-                    isReplay=false;
-                    app.replayAudio();
-                    replayBtnOn.classList.remove('icon-reload-off');
-                }
-                
+                isReplay=!isReplay;
+                replayBtnOn.classList.toggle('icon-reload-off',isReplay)
+                app.replayAudio();
+            }
+            //random bai hat
+            randomBtn.onclick=function(){
+                isRandom=!isRandom;
+                randomBtn.classList.toggle('icon-random-off',isRandom)
                
             }
-            
-            
+            //next bai tiep theo
             nextSongBtn.onclick=function(){
-                app.nextSong();
-                audio_control.play();  
-                
+                if(isRandom){
+                    app.randomSong();
+                    audio_control.play();  
+
+                }
+                else{app.nextSong();
+                    audio_control.play();  
+                }
+
             }
+            //prev bai trc
             prevSongBtn.onclick=function(){
                 app.backSong();
                 audio_control.play();
@@ -137,6 +162,14 @@ const app={
             audio_control.loop=false;
         }
     },
+    randomSong:function () {
+        do{
+            var random=Math.floor(Math.random()*app.songs.length);
+        }while(random===this.currentIndex);
+        this.currentIndex=random;
+        console.log(this.currentIndex);
+        app.renderCurrentSong();
+    },
     nextSong: function () {
         this.currentIndex++;
         if(this.currentIndex>=this.songs.length){
@@ -147,7 +180,7 @@ const app={
     backSong: function () {
         this.currentIndex--;
         if(this.currentIndex<0){
-            this.currentIndex=length-1;
+            this.currentIndex=this.songs.length-1;
         }
         this.renderCurrentSong();
     },
